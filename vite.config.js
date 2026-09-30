@@ -2,13 +2,18 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-export default defineConfig({
+
+export default defineConfig(({ mode }) => ({
   plugins: [react(), tailwindcss()],
+
+  base: mode === "github" ? "/prayojana/" : "/",
+
   server: {
     host: true,
     port: 8080,
     allowedHosts: true,
   },
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -23,4 +28,4 @@ export default defineConfig({
       "@data": path.resolve(__dirname, "./src/data"),
     },
   },
-});
+}));

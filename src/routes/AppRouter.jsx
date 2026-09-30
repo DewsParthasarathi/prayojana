@@ -20,40 +20,50 @@ import UserDetailsPage from "@/pages/user-page/UserDetailsPage";
 import AddUserForm from "@/pages/user-page/AddUserForm";
 import EditUsersForm from "@/pages/user-page/EditUsersForm";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Navigate to={ROUTES.HOUSEHOLD} replace />,
+      errorElement: <NotFoundPage />,
+    },
+    {
+      path: ROUTES.LOGIN,
+      element: <LoginPage />,
+    },
+    {
+      element: <OtpGuard />,
+      children: [
+        {
+          path: ROUTES.OTP_VERIFICATION,
+          element: <OtpVerificationPage />,
+        },
+      ],
+    },
+    {
+      element: <RequireAuth />,
+      children: [
+        {
+          element: <MainLayout />,
+          children: [
+            { path: ROUTES.HOUSEHOLD, element: <Household /> },
+            { path: ROUTES.APPLICATIONS, element: <Application /> },
+            { path: ROUTES.CALENDAR, element: <CalenderPage /> },
+            { path: ROUTES.MESSAGES, element: <Message /> },
+            { path: ROUTES.CHECKLIST, element: <ChecklistPage /> },
+            { path: ROUTES.SOLO, element: <UserPage /> },
+            { path: ROUTES.FILES, element: <FilePage /> },
+            { path: ROUTES.DETAILS, element: <HouseHoldDetail /> },
+            { path: ROUTES.MEMBERDETAILS, element: <MembersDetailsPage /> },
+            { path: ROUTES.USERDATA, element: <UserDetailsPage /> },
+            { path: ROUTES.USERDATAFORM, element: <AddUserForm /> },
+            { path: ROUTES.USERDATAEDITFORM, element: <EditUsersForm /> },
+          ],
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Navigate to={ROUTES.HOUSEHOLD} replace />,
-    errorElement: <NotFoundPage />,
+    basename: "/prayojana",
   },
-  {
-    path: ROUTES.LOGIN,
-    element: <LoginPage />,
-  },
-  {
-    element: <OtpGuard />,
-    children: [{ path: ROUTES.OTP_VERIFICATION, element: <OtpVerificationPage /> }],
-  },
-  {
-    element: <RequireAuth />,
-    children: [
-      {
-        element: <MainLayout />,
-        children: [
-          { path: ROUTES.HOUSEHOLD, element: <Household /> },
-          { path: ROUTES.APPLICATIONS, element: <Application /> },
-          { path: ROUTES.CALENDAR, element: <CalenderPage /> },
-          { path: ROUTES.MESSAGES, element: <Message /> },
-          { path: ROUTES.CHECKLIST, element: <ChecklistPage /> },
-          { path: ROUTES.SOLO, element: <UserPage /> },
-          { path: ROUTES.FILES, element: <FilePage /> },
-          { path: ROUTES.DETAILS, element: <HouseHoldDetail /> },
-          { path: ROUTES.MEMBERDETAILS, element: <MembersDetailsPage /> },
-          { path: ROUTES.USERDATA, element: <UserDetailsPage /> },
-          { path: ROUTES.USERDATAFORM, element: <AddUserForm /> },
-          { path: ROUTES.USERDATAEDITFORM, element: <EditUsersForm /> },
-        ],
-      },
-    ],
-  },
-]);
+);
