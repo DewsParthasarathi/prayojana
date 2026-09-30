@@ -64,6 +64,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/prayojana",
+    basename: import.meta.env.BASE_URL,
   },
 );

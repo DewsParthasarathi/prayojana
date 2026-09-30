@@ -7,10 +7,7 @@ import { useToast } from "@hooks/useToast";
 import { ROUTES } from "@/routes/routes";
 import indiaFlag from "@assets/images/login-images/india-flag.png";
 import downArrow from "@assets/images/login-images/down-arrow.png";
-import {
-  normalizeMobileNumber,
-  getMobileNumberError,
-} from "@/utils/validators";
+import { normalizeMobileNumber, getMobileNumberError } from "@/utils/validators";
 import { requestOtp } from "@/services/otpService";
 import prayojanaLogo from "@assets/images/login-images/prayojana-logo.png";
 
@@ -83,28 +80,21 @@ const LoginForm = () => {
 
   return (
     <div className="login-form-container h-full w-full bg-white">
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        className="w-[80%] m-auto pt-[8%] pb-[12%]"
-      >
+      <form onSubmit={handleSubmit} noValidate className="w-[80%] m-auto pt-[8%] pb-[12%]">
         <div className="logo-wrapper flex justify-center mb-[6%] w-[30%] mx-auto">
           <img src={prayojanaLogo} alt="Prayojana" className="h-10" />
         </div>
 
         <div className="form-headers pb-[8%] text-center">
           <h1 className="mb-2 font-sans text-[4.6rem] font-semibold text-primary">
-            Login to your account
+            Login to your accounts
           </h1>
           <p className="text-login-subhead text-[2rem]">
             Personalized Elder Care That Feels Like Family
           </p>
         </div>
 
-        <label
-          htmlFor="mobile"
-          className="relative flex items-stretch mb-1 w-[70%] mx-auto"
-        >
+        <label htmlFor="mobile" className="relative flex items-stretch mb-1 w-[70%] mx-auto">
           <div
             className={`flex items-center gap-1 border border-r-0 px-3 text-sm text-label-gray  shrink-0 relative after:content-[''] after:absolute after:right-0  after:h-[70%] after:w-[1.5px] after:bg-gray-300
               
@@ -141,10 +131,7 @@ const LoginForm = () => {
 
         <div className=" min-h-[1.25rem] my-[1.2rem]">
           {error && (
-            <p
-              id="mobile-error"
-              className="text-[12px] text-red-500 text-center"
-            >
+            <p id="mobile-error" className="text-[12px] text-red-500 text-center">
               {error}
             </p>
           )}
